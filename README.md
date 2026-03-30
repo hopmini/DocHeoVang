@@ -6,6 +6,8 @@ coverY: 0
 
 # Lời nói đầu
 
+## Lời nói đầu
+
 Hướng dẫn sử dụng hệ thống POS
 
 Các khái niệm cơ bản:
@@ -18,4 +20,5 @@ Các khái niệm cơ bản:
 6. **Loại sản phẩm**: Là danh mục nhóm các sản phẩm có cùng tính chất hoặc chức năng, ví dụ: thực phẩm, đồ uống, quần áo, thiết bị điện tử,.. Phân loại sản phẩm giúp tối ưu hóa việc quản lý, tìm kiếm và theo dõi thông tin.
 7. **Hóa đơn**: Là tài liệu ghi nhận các thông tin chi tiết của một giao dịch bán hàng, bao gồm: mã hóa đơn, danh sách sản phẩm, số lượng, đơn giá, thành tiền, chiết khấu (nếu có), phương thức thanh toán và thời gian giao dịch. Hóa đơn đóng vai trò quan trọng trong việc theo dõi doanh thu và quản lý tài chính của cửa hàng.
 8. **Thanh toán**: Là hành động sử dụng tiền hoặc point tích lũy để hoàn tất giao dịch mua sắm hoặc dịch vụ. Quá trình này có thể được thực hiện thông qua ví điện tử, thẻ ngân hàng, hoặc point tích lũy, tùy theo quy định của hệ thống thanh toán.
-# DocHeoVang
+
+## Hoàng Hà Mobile
