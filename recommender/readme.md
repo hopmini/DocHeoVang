@@ -66,15 +66,15 @@ Tất cả các điểm cuối đều hỗ trợ các tham số chung:
 
 ### Sample Request (Yêu cầu mẫu)
 
-Curl
-
+{% tabs %}
+{% tab title="Curl" %}
 ```
 curl -X GET "https://recommendation.api.useinsider.com/v2/most-popular?partnerName=yourpartnername&locale=tr_TR&size=1&details=true" \
                     -H "X-Auth-Token: YOUR_API_TOKEN"
 ```
+{% endtab %}
 
-JavaScript
-
+{% tab title="JavaScript" %}
 ```
 const apiToken = 'YOUR_API_TOKEN';
                     const endpoint = 'https://recommendation.api.useinsider.com/v2/most-popular';
@@ -93,9 +93,9 @@ const apiToken = 'YOUR_API_TOKEN';
                     })
                     .then(response => response.json())
 ```
+{% endtab %}
 
-Python
-
+{% tab title="Python" %}
 ```
 import requests
                     api_token = 'YOUR_API_TOKEN'
@@ -116,6 +116,8 @@ import requests
                     data = response.json()
                     print(data)
 ```
+{% endtab %}
+{% endtabs %}
 
 ### Sample Response (Phản hồi mẫu)
 
@@ -160,15 +162,15 @@ Một phản hồi thành công sẽ trông như thế này:
 
 Theo mặc định, API chỉ trả về các ID sản phẩm. Để lấy đầy đủ thông tin sản phẩm (hình ảnh, giá cả, mô tả), hãy thêm `details=true`.
 
-Curl
-
+{% tabs %}
+{% tab title="Curl" %}
 ```
 curl -X GET "https://recommendation.api.useinsider.com/v2/most-popular?partnerName=yourpartnername&locale=tr_TR&size=1&details=true" \
                     -H "X-Auth-Token: YOUR_API_TOKEN"
 ```
+{% endtab %}
 
-JavaScript
-
+{% tab title="JavaScript" %}
 ```
 const params = {
                     partnerName: 'yourpartnername',
@@ -177,9 +179,9 @@ const params = {
                     details: true
                     };
 ```
+{% endtab %}
 
-Python
-
+{% tab title="Python" %}
 ```
 params = {
                     'partnerName': 'yourpartnername',
@@ -188,6 +190,8 @@ params = {
                     'details': True
                     }
 ```
+{% endtab %}
+{% endtabs %}
 
 Phản hồi với `details=true` bao gồm:
 
