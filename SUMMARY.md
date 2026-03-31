@@ -2,6 +2,20 @@
 
 * [Lời nói đầu](README.md)
 
+## Recommender
+
+* [Get Recommendations](recommender/readme.md)
+* [Recommendation Response Details](recommender/recommendation-response-details.md)
+* [Filtering Recommendation Responses](recommender/filtering-recommendation-responses.md)
+* [Personalized Recommendation Features](recommender/personalized-recommendation-features.md)
+* [Algorithm Descriptions](recommender/algorithm-descriptions.md)
+* [Best Practices for Recommendation API](recommender/best-practices-for-recommendation-api.md)
+
+## WebSDK
+
+* [Getting Started](websdk/getting-started.md)
+* [Crash Reporting](websdk/crash-reporting.md)
+
 ## Admin ( Người quản trị )
 
 * [Trang chủ](admin-nguoi-quan-tri/quickstart.md)
