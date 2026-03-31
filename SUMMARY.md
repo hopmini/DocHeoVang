@@ -17,7 +17,8 @@
 * [User Activity Tracking](websdk/user-activity-tracking.md)
 * [User & Device Management](websdk/user-and-device-management.md)
 * [Errors & Performance](websdk/errors-and-performance.md)
-* [Events](websdk/events.md)
+* [Engagement & Optimization](websdk/engagement-and-optimization.md)
+* [Privacy, Security & Resources](websdk/privacy-security-and-resources.md)
 
 ## Admin ( Người quản trị )
 
