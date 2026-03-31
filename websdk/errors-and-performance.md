@@ -1,6 +1,6 @@
-# Crash Reporting
+# Errors & Performance
 
-### Crash Reporting
+## Crash Reporting
 
 Để tự động ghi lại và báo cáo các lỗi JavaScript chưa được xử lý (unhandled) trên trang web của bạn (Bạn có thể thêm thông tin bổ sung vào báo cáo lỗi bằng cách cung cấp một đối tượng với các cặp key/value):
 
@@ -100,7 +100,9 @@ Countly.init({
 
 ### Symbolication
 
+{% hint style="warning" %}
 Giải mã lỗi (Crash symbolication) khả dụng cho người dùng phiên bản Enterprise Edition.
+{% endhint %}
 
 Nếu các tệp js bạn cung cấp đã được nén (minified), chuyển đổi (transpiled) hoặc được xử lý từ các tệp nguồn của bạn, bạn có thể sử dụng tính năng symbolication. Với symbolication, các stacktraces của bạn sẽ chỉ chính xác đến các dòng trên tệp nguồn, điều này sẽ giúp các nhà phát triển gỡ lỗi các sự cố và lỗi. Đây là một ví dụ:
 
@@ -141,3 +143,121 @@ Error: Error at depth 3
 Khi sử dụng bất kỳ công cụ xây dựng (build tool) nào, bạn sẽ cần chọn một tùy chọn tạo sơ đồ nguồn (source map) dưới dạng một tệp riêng biệt chứ không phải nội tuyến (inline) với tệp js cuối cùng (ví dụ: tùy chọn `devtool` cho webpack). Nếu bạn thiết lập chính xác, các bản build của bạn sẽ tạo ra một tệp sơ đồ nguồn kết thúc bằng `.map`, đây là tệp sơ đồ nguồn mà bạn sẽ tải lên máy chủ Countly của mình.
 
 Để bắt đầu Giải mã (Symbolicating) các lỗi của bạn, bạn chỉ cần tải tệp sơ đồ nguồn lên thực thể Countly của mình thông qua menu bên: Crashes > Manage Symbols. Trong chế độ xem này, các tệp sơ đồ nguồn bạn đã tải lên sẽ được liệt kê. Để tải lên một tệp, bạn nhấp vào "Add Debug Symbol File", điền loại biểu tượng (symbol type) và các trường phiên bản ứng dụng (app version) tương ứng và tải lên tệp `.map` của bạn. Khi tệp sơ đồ nguồn của bạn đã được tải lên, bạn có thể Giải mã các báo cáo sự cố cho phiên bản ứng dụng đó trên Countly. Để biết thêm thông tin, hãy xem tài liệu Crash Symbolication.
+
+## Application Performance Monitoring
+
+Nếu bạn muốn ghi lại một số chỉ số hiệu năng liên quan đến trang web của mình, có 2 cách để báo cáo các dấu vết hiệu năng (performance traces) này với Countly. Một cách là tự tạo và báo cáo chúng một cách thủ công. Cách còn lại là sử dụng một plugin sẽ vận dụng BoomerangJS để thu thập dữ liệu hiệu năng của trang web và báo cáo dưới dạng một dấu vết hiệu năng.
+
+Bạn có thể tham khảo các ví dụ triển khai APM với BoomerangJS từ các liên kết sau:
+
+* [Async Apm Example](https://github.com/Countly/countly-sdk-web/blob/master/examples/example_apm_async.html)
+* [Sync Apm Example](https://github.com/Countly/countly-sdk-web/blob/master/examples/example_apm.html)
+
+### Custom Traces
+
+Để báo cáo dấu vết thủ công, bạn cần xây dựng đối tượng dấu vết và gọi một phương thức như sau:
+
+{% tabs %}
+{% tab title="Asynchronous" %}
+```
+//report custom trace
+Countly.q.push(["report_trace",{
+  type: "device", //device or network
+  name: "test call", //use name to identify trace and group them by
+  stz: 1234567890123, //start timestamp in milliseconds
+  etz: 1234567890123, //end timestamp in milliseconds
+  apm_metrics: {
+      duration: 1000 //duration of trace
+  }
+}]);
+```
+{% endtab %}
+
+{% tab title="Synchronous" %}
+```
+//report custom trace
+Countly.report_trace({
+  type: "device", //device or network
+  name: "test call", //use name to identify trace and group them by
+  stz: 1234567890123, //start timestamp in milliseconds
+  etz: 1234567890123, //end timestamp in milliseconds
+  apm_metrics: {
+      duration: 1000 //duration of trace
+  }
+});
+```
+{% endtab %}
+{% endtabs %}
+
+Cho dù bạn đang sử dụng Countly theo cách đồng bộ hay bất đồng bộ, bạn luôn phải cung cấp khóa `duration` và giá trị của nó trong `apm_metrics`, nếu không các dấu vết tùy chỉnh sẽ không được ghi lại.
+
+### Automatic Device Traces
+
+Việc báo cáo dấu vết tự động có hai cách triển khai khác nhau tùy thuộc vào việc bạn đang sử dụng Countly theo cách đồng bộ hay bất đồng bộ. Thông thường, chúng ta muốn script của Countly được tải trước và các script liên quan đến BoomerangJS ngay sau đó.
+
+**Asynchronous Implementation**
+
+Để sử dụng các dấu vết thiết bị tự động trong triển khai Countly bất đồng bộ (async), bạn sẽ cần đặt cờ `loadAPMScriptsAsync` thành `true` trong đối tượng Countly. Điều này đảm bảo thứ tự tải script chính xác được thiết lập. Bạn có thể cung cấp hai cờ bổ sung cho đối tượng Countly: cờ thứ nhất là đường dẫn nguồn script BoomerangJS dưới dạng `customSourceBoomerang` và cờ thứ hai là đường dẫn nguồn script countly\_boomerang dưới dạng `customSourceCountlyBoomerang`. Nếu không được cung cấp, SDK sẽ sử dụng các script CDN mới nhất làm nguồn:
+
+```
+Countly.app_key = "YOUR_APP_KEY";
+Countly.url = "YOUR_SERVER_URL";
+Countly.loadAPMScriptsAsync = true;
+// Countly.customSourceBoomerang = "../somewhere/boomerang.min.js";
+// Countly.customSourceCountlyBoomerang = "../somewhere/countly_boomerang.js";
+// ...
+```
+
+Ngoài ra, trong script khởi tạo Countly, bạn cần gọi một phương thức để bắt đầu báo cáo các dấu vết 'loading' và 'network' tự động:
+
+```
+// enables APM
+Countly.q.push(["track_performance"]);
+```
+
+Phương thức này chấp nhận một đối tượng cấu hình BoomerangJS dưới dạng tham số thứ hai tùy chọn. Nếu bạn đã quen thuộc với nó, bạn có thể tự sửa đổi tùy theo nhu cầu của mình. Theo mặc định, SDK sẽ sử dụng cấu hình này:
+
+```
+{
+    //page load timing
+  RT:{},
+  //required for automated networking traces
+  instrument_xhr: true,
+  captureXhrRequestResponse: true,
+  AutoXHR: {
+    alwaysSendXhr: true,
+    monitorFetch: true,
+    captureXhrRequestResponse: true
+  },
+  //required for screen freeze traces
+  Continuity: {
+    enabled: true,
+    monitorLongTasks: true,
+    monitorPageBusy: true,
+    monitorFrameRate: true,
+    monitorInteractions: true,
+    afterOnload: true
+  }
+}
+```
+
+**Synchronous Implementation**
+
+Để báo cáo các dấu vết tự động, bạn sẽ cần bao gồm thêm 2 tệp bổ sung trong dự án của mình ngay sau khi khai báo script Countly với các đường dẫn chính xác theo cấu trúc dự án của bạn:
+
+```
+// Option 1: You can provide local paths
+<script type='text/javascript' src="../plugin/boomerang/boomerang.min.js"></script>
+<script type='text/javascript' src='../plugin/boomerang/countly_boomerang.js'></script>
+
+// Option 2: Or you can use CDN for path
+<script type='text/javascript' src="https://cdn.jsdelivr.net/npm/countly-sdk-web@latest/plugin/boomerang/boomerang.min.js"></script> 
+<script type='text/javascript' src="https://cdn.jsdelivr.net/npm/countly-sdk-web@latest/plugin/boomerang/countly_boomerang.js"></script>
+```
+
+Sau đó, bạn sẽ gọi một phương thức để bắt đầu báo cáo các dấu vết 'loading' và 'network' tự động. Bạn có thể tùy chọn cung cấp một đối tượng cấu hình BoomerangJS tại đây như đã đề cập ở phần triển khai bất đồng bộ. Cách sử dụng mặc định bên trong script khởi tạo Countly của bạn sẽ như sau:
+
+```
+//automatically report traces
+Countly.track_performance();
+```

@@ -77,7 +77,9 @@ Bạn có thể sử dụng Countly Web SDK theo kiểu synchronously (đồng b
 
 Tại đây, bạn cũng cần cung cấp application key (APP\_KEY) và server URL của ứng dụng trên máy chủ Countly. Vui lòng kiểm tra tài liệu hướng dẫn để biết cách lấy các thông tin này.
 
+{% hint style="success" %}
 Bạn có thể kiểm tra tất cả các tùy chọn cấu hình (config options) để điều chỉnh hành vi của SDK tại trang tài liệu gốc.
+{% endhint %}
 
 Ví dụ thiết lập mẫu (npm/yarn):
 
