@@ -14,7 +14,10 @@
 ## WebSDK
 
 * [Getting Started](websdk/getting-started.md)
+* [User Activity Tracking](websdk/user-activity-tracking.md)
+* [User & Device Management](websdk/user-and-device-management.md)
 * [Crash Reporting](websdk/crash-reporting.md)
+* [Events](websdk/events.md)
 
 ## Admin ( Người quản trị )
 
