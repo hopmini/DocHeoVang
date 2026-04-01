@@ -6,7 +6,7 @@ Recommendation API cung cấp một loạt các khả năng cá nhân hóa giúp
 
 Hiện tại, Recommendation API hỗ trợ các tính năng cá nhân hóa sau:
 
-#### Personalized Recommendation Algorithms
+### Personalized Recommendation Algorithms
 
 Các thuật ngữ gợi ý sau đây vốn dĩ đã cung cấp các gợi ý sản phẩm được cá nhân hóa dựa trên dữ liệu hành vi và tương tác của người dùng.
 
@@ -28,7 +28,7 @@ Gợi ý các sản phẩm dựa trên các lượt xem trang sản phẩm gần
 
 Các thuật toán này tận dụng cả dữ liệu lịch sử và dữ liệu thời gian thực để đảm bảo các gợi ý luôn phù hợp, kịp thời và phù hợp với sở thích của từng cá nhân.
 
-#### Personalization with the User’s Last Visited Item
+### Personalization with the User’s Last Visited Item
 
 Recommendation API có thể cá nhân hóa kết quả bằng cách sử dụng trang sản phẩm cuối cùng mà người dùng đã truy cập. Hành vi này áp dụng cho cả thuật toán User-Based Recommendations và Real-Time User Engagement.
 
@@ -36,7 +36,7 @@ Khi API không có đủ dữ liệu ở cấp độ người dùng để tạo 
 
 Cơ chế fallback này đảm bảo rằng các gợi ý vẫn duy trì được sự liên quan và nhận biết được ngữ cảnh, ngay cả khi dữ liệu lịch sử của người dùng bị hạn chế.
 
-#### Personalization with Users Recent Interactions
+### Personalization with Users Recent Interactions
 
 Recommendation API có thể tự động loại trừ các sản phẩm mà người dùng đã tương tác, nhờ đó họ sẽ không thấy các gợi ý cho những mặt hàng họ đã xem, đã mua hoặc đã tương tác theo cách khác.
 
