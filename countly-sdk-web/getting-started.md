@@ -85,6 +85,7 @@ Ví dụ thiết lập mẫu (npm/yarn):
 
 {% tabs %}
 {% tab title="nmp/yarn" %}
+{% code lineNumbers="true" fullWidth="true" %}
 ```
 import Countly from "countly-sdk-web";
 
@@ -98,9 +99,11 @@ Countly.init({
 Countly.track_sessions();
 Countly.track_pageview();
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="HTML(Async)" %}
+{% code lineNumbers="true" fullWidth="false" %}
 ```
 <!--inside <head></head>-->
 <script type='text/javascript'>
@@ -125,9 +128,11 @@ Countly.q.push(['track_pageview']);
 })();
 </script>
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="HTML(Sync)" %}
+{% code lineNumbers="true" %}
 ```
 <!--inside <head></head>-->
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/countly-sdk-web@latest/lib/countly.min.js'></script>
@@ -143,6 +148,7 @@ Countly.track_sessions();
 Countly.track_pageview();
 </script>
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 

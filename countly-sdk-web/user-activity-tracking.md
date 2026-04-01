@@ -6,7 +6,7 @@
 
 Events là một cách để theo dõi bất kỳ hành động tùy chỉnh nào hoặc các dữ liệu khác mà bạn muốn theo dõi từ trang web của mình. Bạn cũng có thể thiết lập các phân đoạn (segments) để có thể xem phân tích chi tiết của hành động bằng cách cung cấp các giá trị phân đoạn.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Tất cả dữ liệu được truyền đến thực thể (instance) Countly thông qua SDK hoặc API phải ở định dạng UTF-8.
 {% endhint %}
 
@@ -22,6 +22,7 @@ Dưới đây là ví dụ về việc thêm một event với tất cả các t
 
 {% tabs %}
 {% tab title="Asynchronous" %}
+{% code lineNumbers="true" %}
 ```
 Countly.q.push(['add_event',{
   "key": "Survey_success",
@@ -34,9 +35,11 @@ Countly.q.push(['add_event',{
   }
 }]);
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="Synchronous" %}
+{% code lineNumbers="true" %}
 ```
 Countly.add_event({
   "key": "Survey_success",
@@ -49,6 +52,7 @@ Countly.add_event({
   }
 });
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
@@ -96,6 +100,7 @@ Phương thức end\_event dừng bộ đếm thời gian và tạo một sự k
 
 {% tabs %}
 {% tab title="Asynchronous" %}
+{% code lineNumbers="true" %}
 ```
 //end event
 Countly.q.push(['end_event', 'timedEvent']);
@@ -111,9 +116,11 @@ Countly.q.push(['end_event',{
   }
 }]);
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="Synchronous" %}
+{% code lineNumbers="true" %}
 ```
 //end event
 Countly.end_event("timedEvent")
@@ -129,6 +136,7 @@ Countly.end_event({
   }
 });
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
