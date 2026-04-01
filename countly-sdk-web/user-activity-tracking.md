@@ -60,7 +60,7 @@ Countly.add_event({
 
 Timed events là các phương thức tiện ích của SDK để tính toán thời lượng của một hoạt động một cách dễ dàng. Có ba phương thức khả dụng để sử dụng nhằm tính toán thuộc tính thời lượng của một sự kiện: start\_event, cancel\_event, và end\_event.
 
-{% hint style="info" %}
+{% hint style="success" %}
 Tuy nhiên, điều quan trọng cần lưu ý là các phương thức này hoạt động trên lớp bộ nhớ (memory layer) và không nên được sử dụng để tính toán thời lượng trong các tình huống xảy ra việc khởi động lại hoặc làm mới trình duyệt.
 {% endhint %}
 
@@ -140,7 +140,7 @@ Countly.end_event({
 {% endtab %}
 {% endtabs %}
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Nếu end\_event không được gọi, sẽ không có sự kiện nào được gửi đến máy chủ.
 {% endhint %}
 
